@@ -1,0 +1,30 @@
+<header class="header">
+  <span class="header--title">TODO LIST</span>
+</header>
+
+
+<section class="content">
+  <form [formGroup]="todoForm" (ngSubmit)="add()">
+    <input type="text" formControlName="task" class="task-input"
+           placeholder="What are you planning to do?">
+  </form>
+  <div class="list-content">
+    <div class="list-item" *ngFor="let item of dataService.data; let i = index">
+      <div class="item-content">
+        <label for="{{i}}" class="container">
+          <input id="{{i}}" type="checkbox">
+          <span class="item-text">{{item.value}}</span>
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="item-controls">
+        <img (click)="edit(i)" src="assets/imgs/icons/edit.png" alt="edit">
+        <img (click)="remove(i)" src="assets/imgs/icons/delete.svg" alt="delete">
+      </div>
+    </div>
+  </div>
+
+  <app-edit-task *ngIf="isEditing" (closePopup)="onClosePopup($event)"></app-edit-task>
+</section>
+
+

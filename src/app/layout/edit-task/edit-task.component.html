@@ -1,0 +1,22 @@
+<div class="popup">
+  <div class="popup-header">
+    <span>Editing item <b>{{activeTask?.value.slice(0, 5)}}...</b></span>
+  </div>
+
+  <div class="popup-content-top">
+    <span>Added date:</span>
+    <span><b>{{activeTask?.date.toDateString()}}</b></span>
+  </div>
+
+  <div class="popup-content">
+    <textarea class="content-input" [(ngModel)]="activeTask.value">
+    </textarea>
+  </div>
+
+  <div class="popup-footer">
+    <span class="close" (click)="onClosePopup(false)">Close</span>
+  </div>
+</div>
+
+
+<app-backdrop (closePopup)="onClosePopup($event)"></app-backdrop>
